@@ -1,41 +1,42 @@
-// this is a file to play a playable game to play rock paper sciccors
-
-// Get computer choice
-let choice = ['rock', 'paper', 'scissors'];
-function getComputerChoice(choice){
-
-    return choice[Math.floor(Math.random() * choice.length)];
+var playerMove = function() {
+    var choose =prompt("Let's play rock, paper, scissors! Choose rock, paper, or scissors!");
+    var answer;
+if(choose === "rock") {
+    answer = 1;
+} else if(choose === "paper") {
+    answer = 2;
+} else if(choose === "scissors") {
+    answer = 3;
 }
+return answer;
+};
 
-// console.log(getComputerChoice(choice))
-console.log(getComputerChoice(choice));
-//get human choice
-function getHumanChoice(){
-    const playerSelection = prompt("Please enter value").toLowerCase;
-    return playerSelection;
-}
+var player = playerMove();
 
-// see who wins
-function game(playerSelection, computerSelection){
-    console.log(playerSelection);
-    console.log(computerSelection);
-    if (playerSelection===computerSelection){
-        console.log("It's a tie! You both picked the same choice!")
-    }
-    else if (playerSelection==="rock" && computerSelection==="scissors"){
-        console.log ("You win! Rock beats scissors.")
-    }
-    else if (playerSelection==="paper" && computerSelection==="rock"){
-        console.log ("You win! Paper beats rock.")
-    }
-    else if (playerSelection==="scissors" && computerSelection==="paper"){
-        console.log ("You win! Scissors beats paper.")
-    }
-    else {
-        console.log("You Lose!")
-    }
+var opponent = function() {
+var move = Math.floor(Math.random()*4);
+return move;
+};
 
-}
+var opponentMove = opponent();
 
-(getHumanChoice)(getComputerChoice);
+var winner = function(playerMove, opponentMove) {
+if(playerMove === opponentMove) {
+    console.log("It's a draw!");
+} else if(playerMove === 1 && opponentMove === 3) {
+    console.log("You win with rock!");
+} else if(playerMove === 1 && opponentMove === 2) {
+    console.log("You lost with rock!");
+} else if(playerMove === 2 && opponentMove === 1) {
+    console.log("You won with paper!");
+} else if(playerMove === 2 && opponentMove === 3) {
+    console.log("You lost with paper!");
+} else if(playerMove === 3 && opponentMove === 1) {
+    console.log("You won with sissors!");
+} else if(playerMove === 3 && opponentMove === 2) {
+    console.log("You lost with scissors!");
+    }
+};
 
+
+winner(player, opponentMove);
